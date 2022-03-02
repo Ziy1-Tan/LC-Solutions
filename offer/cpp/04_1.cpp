@@ -3,7 +3,6 @@
 // 空间复杂度O(1)
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
 class Solution {
