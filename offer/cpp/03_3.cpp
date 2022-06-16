@@ -16,6 +16,7 @@ public:
   }
 };
 
+// test the git push
 int main(int argc, const char *argv[]) {
   vector<int> nums{2, 3, 1, 0, 2, 5, 3};
   auto res = (new Solution())->findRepeatNumber(nums);
