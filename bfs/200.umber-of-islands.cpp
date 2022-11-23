@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <queue>
+#include <utility>
 using namespace std;
 
 class Solution
@@ -23,23 +25,34 @@ public:
   }
 
 private:
-  void bfs(vector<vector<char>> &grid, const int i, const int j)
+  void bfs(vector<vector<char>> &grid, const int r, const int c)
   {
-    if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size())
+    queue<pair<int, int>> q;
+    q.push({r, c});
+    while (!q.empty())
     {
-      return;
-    }
+      auto p = q.front();
+      int i = p.first;
+      int j = p.second;
+      q.pop();
+      // 越界
+      if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size())
+      {
+        continue;
+      }
 
-    if (grid[i][j] != '1')
-    {
-      return;
-    }
+      // 不为岛屿
+      if (grid[i][j] != '1')
+      {
+        continue;
+      }
 
-    grid[i][j] = '2';
-    bfs(grid, i - 1, j);
-    bfs(grid, i + 1, j);
-    bfs(grid, i, j - 1);
-    bfs(grid, i, j + 1);
+      grid[i][j] = '2';
+      q.push({i - 1, j});
+      q.push({i + 1, j});
+      q.push({i, j + 1});
+      q.push({i, j - 1});
+    }
   }
 };
 

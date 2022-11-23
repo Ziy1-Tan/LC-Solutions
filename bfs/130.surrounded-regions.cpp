@@ -1,4 +1,6 @@
 #include <vector>
+#include <queue>
+#include <utility>
 #include <iostream>
 using namespace std;
 
@@ -40,18 +42,32 @@ public:
     }
 
 private:
-    void bfs(vector<vector<char>> &board, const int i, const int j)
+    void bfs(vector<vector<char>> &board, const int r, const int c)
     {
-        if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size() || board[i][j] == 'X' || board[i][j] == 'B')
+        queue<pair<int, int>> q;
+        q.push({r, c});
+        while (!q.empty())
         {
-            return;
-        }
+            auto p = q.front();
+            q.pop();
+            int i = p.first;
+            int j = p.second;
+            if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size())
+            {
+                continue;
+            }
 
-        board[i][j] = 'B';
-        bfs(board, i - 1, j);
-        bfs(board, i + 1, j);
-        bfs(board, i, j - 1);
-        bfs(board, i, j + 1);
+            if (board[i][j] != 'O')
+            {
+                continue;
+            }
+
+            board[i][j] = 'B';
+            q.push({i - 1, j});
+            q.push({i + 1, j});
+            q.push({i, j - 1});
+            q.push({i, j + 1});
+        }
     }
 };
 
