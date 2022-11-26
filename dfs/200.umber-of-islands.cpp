@@ -15,7 +15,7 @@ public:
         if (grid[i][j] == '1')
         {
           cnt++;
-          bfs(grid, i, j);
+          dfs(grid, i, j);
         }
       }
     }
@@ -23,7 +23,7 @@ public:
   }
 
 private:
-  void bfs(vector<vector<char>> &grid, const int i, const int j)
+  void dfs(vector<vector<char>> &grid, const int i, const int j)
   {
     if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size())
     {
@@ -36,10 +36,10 @@ private:
     }
 
     grid[i][j] = '2';
-    bfs(grid, i - 1, j);
-    bfs(grid, i + 1, j);
-    bfs(grid, i, j - 1);
-    bfs(grid, i, j + 1);
+    dfs(grid, i - 1, j);
+    dfs(grid, i + 1, j);
+    dfs(grid, i, j - 1);
+    dfs(grid, i, j + 1);
   }
 };
 

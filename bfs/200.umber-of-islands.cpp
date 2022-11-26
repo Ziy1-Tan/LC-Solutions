@@ -1,7 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <queue>
 #include <utility>
+#include <vector>
 using namespace std;
 
 class Solution
@@ -17,7 +17,7 @@ public:
         if (grid[i][j] == '1')
         {
           cnt++;
-          bfs(grid, i, j);
+          dfs(grid, i, j);
         }
       }
     }
@@ -25,7 +25,7 @@ public:
   }
 
 private:
-  void bfs(vector<vector<char>> &grid, const int r, const int c)
+  void dfs(vector<vector<char>> &grid, const int r, const int c)
   {
     queue<pair<int, int>> q;
     q.push({r, c});
@@ -59,11 +59,10 @@ private:
 int main()
 {
   Solution s;
-  vector<vector<char>> grid{
-      {'1', '1', '0', '0', '0'},
-      {'1', '1', '0', '0', '0'},
-      {'0', '0', '1', '0', '0'},
-      {'0', '0', '0', '1', '1'}};
+  vector<vector<char>> grid{{'1', '1', '0', '0', '0'},
+                            {'1', '1', '0', '0', '0'},
+                            {'0', '0', '1', '0', '0'},
+                            {'0', '0', '0', '1', '1'}};
   cout << s.numIslands(grid) << endl;
 
   return 0;

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"C_Cpp.intelliSenseEngine": "Default",
+		"C_Cpp.intelliSenseEngineFallback": "Enabled",
+	}
+}
