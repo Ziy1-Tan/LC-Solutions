@@ -13,13 +13,8 @@ class Solution
 public:
     ListNode *reverseList(ListNode *head)
     {
-        if (head == nullptr)
-        {
-            return head;
-        }
-
         ListNode *prev = nullptr, *curr = head;
-        while (curr->next != nullptr)
+        while (curr != nullptr)
         {
             ListNode *next = curr->next;
             curr->next = prev;
@@ -27,9 +22,7 @@ public:
             curr = next;
         }
 
-        curr->next = prev;
-
-        return curr;
+        return prev;
     }
 };
 
@@ -66,7 +59,7 @@ int main(int argc, char const *argv[])
     ListNode *head = new ListNode(1);
     head->next = new ListNode(2);
     head->next->next = new ListNode(3);
-    Solution2 s;
+    Solution s;
     auto res = s.reverseList(head);
     print_list(res);
     return 0;

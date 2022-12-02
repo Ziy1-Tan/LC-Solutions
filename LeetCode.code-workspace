@@ -7,5 +7,12 @@
 	"settings": {
 		"C_Cpp.intelliSenseEngine": "Default",
 		"C_Cpp.intelliSenseEngineFallback": "Enabled",
+		"files.associations": {
+			"*.test": "sql",
+			"*.result": "sql",
+			"*.result.tmp": "sql",
+			"*.log.*": "log",
+			"initializer_list": "cpp"
+		},
 	}
 }
