@@ -7,12 +7,16 @@
 	"settings": {
 		"C_Cpp.intelliSenseEngine": "Default",
 		"C_Cpp.intelliSenseEngineFallback": "Enabled",
+		"[cpp]": {
+			"editor.defaultFormatter": "ms-vscode.cpptools"
+		},
 		"files.associations": {
 			"*.test": "sql",
 			"*.result": "sql",
-			"*.result.tmp": "sql",
 			"*.log.*": "log",
-			"initializer_list": "cpp"
+			"*.result.tmp": "sql",
+			"initializer_list": "cpp",
+			"tuple": "cpp"
 		},
 	}
 }

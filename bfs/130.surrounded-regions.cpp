@@ -1,6 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <utility>
+#include <tuple>
 #include <vector>
 using namespace std;
 
@@ -19,14 +19,14 @@ public:
     int c = board[0].size();
     for (int i = 0; i < r; i++)
     {
-      dfs(board, i, 0);
-      dfs(board, i, c - 1);
+      bfs(board, i, 0);
+      bfs(board, i, c - 1);
     }
 
     for (int i = 0; i < c; i++)
     {
-      dfs(board, 0, i);
-      dfs(board, r - 1, i);
+      bfs(board, 0, i);
+      bfs(board, r - 1, i);
     }
 
     for (int i = 0; i < r; i++)
@@ -42,16 +42,14 @@ public:
   }
 
 private:
-  void dfs(vector<vector<char>> &board, const int r, const int c)
+  void bfs(vector<vector<char>> &board, const int r, const int c)
   {
-    queue<pair<int, int>> q;
+    queue<tuple<int, int>> q;
     q.push({r, c});
     while (!q.empty())
     {
-      auto p = q.front();
+      auto [i, j] = q.front();
       q.pop();
-      int i = p.first;
-      int j = p.second;
       if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size())
       {
         continue;

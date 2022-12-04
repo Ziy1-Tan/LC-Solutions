@@ -1,6 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <utility>
+#include <tuple>
 #include <vector>
 using namespace std;
 
@@ -17,7 +17,7 @@ public:
         if (grid[i][j] == '1')
         {
           cnt++;
-          dfs(grid, i, j);
+          bfs(grid, i, j);
         }
       }
     }
@@ -25,15 +25,13 @@ public:
   }
 
 private:
-  void dfs(vector<vector<char>> &grid, const int r, const int c)
+  void bfs(vector<vector<char>> &grid, const int r, const int c)
   {
-    queue<pair<int, int>> q;
+    queue<tuple<int,int>> q;
     q.push({r, c});
     while (!q.empty())
     {
-      auto p = q.front();
-      int i = p.first;
-      int j = p.second;
+      auto [i, j] = q.front();
       q.pop();
       // 越界
       if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size())
