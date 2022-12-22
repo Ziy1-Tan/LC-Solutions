@@ -5,8 +5,8 @@
 		}
 	],
 	"settings": {
-		"C_Cpp.intelliSenseEngine": "Default",
-		"C_Cpp.intelliSenseEngineFallback": "Enabled",
+		"C_Cpp.intelliSenseEngine": "default",
+		"C_Cpp.intelliSenseEngineFallback": "enabled",
 		"[cpp]": {
 			"editor.defaultFormatter": "ms-vscode.cpptools"
 		},

@@ -34,17 +34,9 @@ public:
         dummy->next = head;
 
         ListNode *prev = dummy, *end = dummy;
-        while (end->next != nullptr)
+        while (end->next != nullptr && end->next->next != nullptr)
         {
-            if (end->next->next != nullptr)
-            {
-                end = end->next->next;
-            }
-            else
-            {
-                break;
-            }
-
+            end = end->next->next;
             ListNode *start = prev->next, *next = end->next;
 
             end->next = start;
