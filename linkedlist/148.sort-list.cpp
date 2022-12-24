@@ -46,8 +46,9 @@ public:
     {
         ListNode dummy(0);
         dummy.next = head;
-        ListNode *p = head;
+
         int length = 0;
+        ListNode *p = head;
         while (p != nullptr)
         {
             length++;
@@ -57,14 +58,16 @@ public:
         for (int step = 1; step < length; step *= 2)
         {
             ListNode *curr = dummy.next, *tail = &dummy;
+
             while (curr != nullptr)
             {
-                // 找到两段相邻的链表并合并
+                // 切割两段list进行按序合并
                 ListNode *list1 = curr;
                 ListNode *list2 = split(curr, step);
                 curr = split(list2, step);
 
                 tail->next = merge(list1, list2);
+                // 指向合并后链表末尾
                 while (tail->next != nullptr)
                 {
                     tail = tail->next;
@@ -99,21 +102,21 @@ private:
     {
         ListNode dummy(0);
         ListNode *curr = &dummy;
-        while (list1 != nullptr || list2 != nullptr)
+        while (list1 && list2)
         {
-            int val1 = list1 == nullptr ? INT32_MAX : list1->val;
-            int val2 = list2 == nullptr ? INT32_MAX : list2->val;
-            curr->next = val1 < val2 ? list1 : list2;
-            curr = curr->next;
-            if (val1 < val2)
+            if (list1->val < list2->val)
             {
-                list1 = list1 == nullptr ? nullptr : list1->next;
+                curr->next = list1;
+                list1 = list1->next;
             }
             else
             {
-                list2 = list2 == nullptr ? nullptr : list2->next;
+                curr->next = list2;
+                list2 = list2->next;
             }
+            curr = curr->next;
         }
+        curr->next = (list1 == nullptr) ? list2 : list1;
 
         return dummy.next;
     }
