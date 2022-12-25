@@ -13,10 +13,11 @@
 		"files.associations": {
 			"*.test": "sql",
 			"*.result": "sql",
-			"*.log.*": "log",
 			"*.result.tmp": "sql",
+			"*.log.*": "log",
 			"initializer_list": "cpp",
-			"tuple": "cpp"
+			"tuple": "cpp",
+			"stack": "cpp"
 		},
 	}
 }
