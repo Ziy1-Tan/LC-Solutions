@@ -17,7 +17,8 @@
 			"*.log.*": "log",
 			"initializer_list": "cpp",
 			"tuple": "cpp",
-			"stack": "cpp"
+			"stack": "cpp",
+			"limits": "cpp"
 		},
 	}
 }
