@@ -18,7 +18,8 @@
 			"initializer_list": "cpp",
 			"tuple": "cpp",
 			"stack": "cpp",
-			"limits": "cpp"
+			"limits": "cpp",
+			"__config": "cpp"
 		},
 	}
 }

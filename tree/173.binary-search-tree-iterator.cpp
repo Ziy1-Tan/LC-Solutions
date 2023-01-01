@@ -20,7 +20,7 @@ public:
 
     int next()
     {
-        while (curr != nullptr)
+        while (curr)
         {
             stack.push(curr);
             curr = curr->left;
@@ -34,12 +34,12 @@ public:
 
     bool hasNext()
     {
-        return curr != nullptr || !stack.empty();
+        return curr || !stack.empty();
     }
 
 private:
     stack<TreeNode *> stack;
-    TreeNode *curr = nullptr;
+    TreeNode *curr;
 };
 
 int main(int argc, char const *argv[])

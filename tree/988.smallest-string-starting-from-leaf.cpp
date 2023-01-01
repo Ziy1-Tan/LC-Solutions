@@ -15,9 +15,6 @@ class Solution
 public:
     string smallestFromLeaf(TreeNode *root)
     {
-        if (!root)
-            return "";
-
         dfs(root, "");
         return res;
     }
