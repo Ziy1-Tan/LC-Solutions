@@ -19,25 +19,26 @@ public:
         if (!root)
             return 0;
 
-        dfs(root, targetSum);
-        pathSum(root->left, targetSum);
-        pathSum(root->right, targetSum);
-        return cnt;
+        int res = rootSum(root, targetSum);
+        res += pathSum(root->left, targetSum);
+        res += pathSum(root->right, targetSum);
+        return res;
     }
 
 private:
-    int cnt = 0;
-    void dfs(TreeNode *root, long sum)
+    int rootSum(TreeNode *root, long sum)
     {
         if (!root)
-            return;
+            return 0;
 
+        int cnt = 0;
         sum -= root->val;
         if (sum == 0)
             cnt++;
 
-        dfs(root->left, sum);
-        dfs(root->right, sum);
+        cnt += rootSum(root->left, sum);
+        cnt += rootSum(root->right, sum);
+        return cnt;
     }
 };
 

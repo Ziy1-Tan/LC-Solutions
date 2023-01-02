@@ -19,7 +19,8 @@
 			"tuple": "cpp",
 			"stack": "cpp",
 			"limits": "cpp",
-			"__config": "cpp"
+			"__config": "cpp",
+			"queue": "cpp"
 		},
 	}
 }
