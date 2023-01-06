@@ -18,8 +18,8 @@ public:
         if (!root)
             return nullptr;
 
-        root->left = invertTree(root->left);
-        root->right = invertTree(root->right);
+        invertTree(root->left);
+        invertTree(root->right);
 
         TreeNode *tmp = root->left;
         root->left = root->right;

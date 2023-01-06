@@ -20,7 +20,9 @@
 			"stack": "cpp",
 			"limits": "cpp",
 			"__config": "cpp",
-			"queue": "cpp"
+			"queue": "cpp",
+			"iosfwd": "cpp",
+			"iostream": "cpp"
 		},
 	}
 }
