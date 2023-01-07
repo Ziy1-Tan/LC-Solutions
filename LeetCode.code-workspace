@@ -22,7 +22,8 @@
 			"__config": "cpp",
 			"queue": "cpp",
 			"iosfwd": "cpp",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"vector": "cpp"
 		},
 	}
 }
