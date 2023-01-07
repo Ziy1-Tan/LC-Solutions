@@ -39,8 +39,8 @@ public:
             end = end->next->next;
             ListNode *start = prev->next, *next = end->next;
 
-            end->next = start;
             prev->next = end;
+            end->next = start;
             start->next = next;
 
             prev = start;
