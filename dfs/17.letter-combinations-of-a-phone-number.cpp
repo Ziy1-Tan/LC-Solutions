@@ -14,8 +14,8 @@ public:
     }
 
 private:
-    vector<string> letters = {"", "", "abc", "def", "ghi",
-                              "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    vector<string> letters{"", "", "abc", "def", "ghi",
+                           "jkl", "mno", "pqrs", "tuv", "wxyz"};
     vector<string> res;
     void dfs(const string &digits, int i, string path)
     {
