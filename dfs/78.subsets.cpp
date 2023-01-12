@@ -46,10 +46,30 @@ public:
     }
 };
 
+class Solution3
+{
+public:
+    vector<vector<int>> subsets(vector<int> &nums)
+    {
+        vector<vector<int>> res;
+        vector<int> path;
+        int n = nums.size();
+        for (int mask = 0; mask < (1 << n); mask++)
+        {
+            path.clear();
+            for (int i = 0; i < n; i++)
+                if (mask & (1 << i))
+                    path.push_back(nums[i]);
+            res.push_back(path);
+        }
+        return res;
+    }
+};
+
 int main(int argc, char const *argv[])
 {
     vector<int> nums{1, 2, 3};
-    auto v = (new Solution2)->subsets(nums);
+    auto v = (new Solution3)->subsets(nums);
     auto pv = [](const auto res)
     {
         for (auto &&i : res)

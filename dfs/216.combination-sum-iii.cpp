@@ -34,9 +34,37 @@ private:
     }
 };
 
+class Solution2
+{
+public:
+    vector<vector<int>> combinationSum3(int k, int n)
+    {
+        vector<vector<int>> res;
+        vector<int> path;
+        path.reserve(9);
+        for (int mask = 0; mask < (1 << 9); mask++)
+        {
+            path.clear();
+            int rest = n;
+            for (int i = 0; i < 9; i++)
+            {
+                if (mask & (1 << i))
+                {
+                    rest -= i + 1;
+                    path.push_back(i + 1);
+                }
+            }
+            if (path.size() == k && rest == 0)
+                res.push_back(path);
+        }
+
+        return res;
+    }
+};
+
 int main(int argc, char const *argv[])
 {
-    auto res = (new Solution)->combinationSum3(3, 9);
+    auto res = (new Solution2)->combinationSum3(3, 9);
     auto pv = [](const auto res)
     {
         for (auto &&i : res)
