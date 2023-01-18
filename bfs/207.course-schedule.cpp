@@ -16,7 +16,6 @@ public:
             adj[pre[1]].push_back(pre[0]);
         }
 
-        int cnt = 0;
         queue<int> q;
         for (int i = 0; i < numCourses; i++)
             if (inDegree[i] == 0)
@@ -24,7 +23,7 @@ public:
 
         while (!q.empty())
         {
-            cnt++;
+            numCourses--;
             int selected = q.front();
             q.pop();
 
@@ -41,7 +40,7 @@ public:
             }
         }
 
-        return cnt == numCourses;
+        return numCourses == 0;
     }
 };
 
@@ -63,7 +62,7 @@ public:
     }
 
 private:
-    // 检查以i为起点的图有没有环
+    // 检查以i为起点的图有没有环, 遍历该节点时，设置为1，遍历完该节点的所有邻接节点后，设置为-1
     bool dfs(int i, const vector<vector<int>> &adj, vector<int> &flags)
     {
         if (flags[i] == -1)
