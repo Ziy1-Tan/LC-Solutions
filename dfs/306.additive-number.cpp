@@ -33,7 +33,7 @@ private:
                     continue;
             }
 
-            if (dfs(num, i + 1, cnt + 1, prev2, curr))
+            if (dfs(num, i + 1, cnt + 1, curr, prev1))
                 return true;
         }
 
@@ -43,7 +43,7 @@ private:
 
 int main(int argc, char const *argv[])
 {
-    auto res = (new Solution)->isAdditiveNumber("1023");
+    auto res = (new Solution)->isAdditiveNumber("199100199");
     cout << res << endl;
     return 0;
 }
