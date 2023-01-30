@@ -23,7 +23,24 @@
 			"queue": "cpp",
 			"iosfwd": "cpp",
 			"iostream": "cpp",
-			"vector": "cpp"
+			"vector": "cpp",
+			"string": "cpp",
+			"__bit_reference": "cpp",
+			"__node_handle": "cpp",
+			"__split_buffer": "cpp",
+			"array": "cpp",
+			"deque": "cpp",
+			"set": "cpp",
+			"string_view": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"__hash_table": "cpp",
+			"__tree": "cpp",
+			"functional": "cpp",
+			"iterator": "cpp",
+			"locale": "cpp",
+			"variant": "cpp",
+			"version": "cpp"
 		},
 	}
 }

@@ -32,9 +32,7 @@ private:
         int right = max(dfs(root->right), 0);
 
         // 更新结果
-        int val = root->val + left + right;
-        res = max(res, val);
-
+        res = max(res, root->val + left + right);
         return root->val + max(left, right);
     }
 };

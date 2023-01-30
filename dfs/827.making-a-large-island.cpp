@@ -48,32 +48,33 @@ public:
         }
 
         // 遍历所有0格子，连接相邻岛屿
-        unordered_set<int> used_islands;
+        unordered_set<int> used;
         for (int i = 0; i < grid.size(); i++)
         {
-            for (int k = 0; k < grid[0].size(); k++)
+            for (int j = 0; j < grid[0].size(); j++)
             {
                 int cnt = 1;
-                used_islands.clear();
-                if (grid[i][k] == 0)
+                used.clear();
+                if (grid[i][j] == 0)
                 {
                     allOne = false;
-                    for (int l = 0; l < 4; l++)
+                    for (int k = 0; k < 4; k++)
                     {
-                        int x = i + dx[l];
-                        int y = k + dy[l];
+                        int x = i + dx[k];
+                        int y = j + dy[k];
                         if (x < 0 || y < 0 || x >= grid.size() || y >= grid[0].size())
                         {
                             continue;
                         }
 
-                        if (used_islands.count(grid[x][y]))
+                        int mask = grid[x][y];
+                        if (used.count(mask))
                         {
                             continue;
                         }
 
-                        cnt += island_size[grid[x][y]];
-                        used_islands.insert(grid[x][y]);
+                        cnt += island_size[mask];
+                        used.insert(mask);
                     }
                 }
                 res = max(res, cnt);
@@ -87,24 +88,24 @@ public:
 class Solution2
 {
 private:
-    int dfs(vector<vector<int>> &grid, int i, int k, int mask)
+    int dfs(vector<vector<int>> &grid, int i, int j, int mask)
     {
-        if (i < 0 || k < 0 || i >= grid.size() || k >= grid[0].size())
+        if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size())
         {
             return 0;
         }
 
-        if (grid[i][k] == 0 || grid[i][k] == mask)
+        if (grid[i][j] == 0 || grid[i][j] == mask)
         {
             return 0;
         }
 
-        grid[i][k] = mask;
+        grid[i][j] = mask;
         int cnt = 1 +
-                  dfs(grid, i - 1, k, mask) +
-                  dfs(grid, i + 1, k, mask) +
-                  dfs(grid, i, k - 1, mask) +
-                  dfs(grid, i, k + 1, mask);
+                  dfs(grid, i - 1, j, mask) +
+                  dfs(grid, i + 1, j, mask) +
+                  dfs(grid, i, j - 1, mask) +
+                  dfs(grid, i, j + 1, mask);
         return cnt;
     }
 
@@ -116,15 +117,15 @@ public:
         int mask = 2;
         for (int i = 0; i < grid.size(); i++)
         {
-            for (int k = 0; k < grid[0].size(); k++)
+            for (int j = 0; j < grid[0].size(); j++)
             {
-                if (grid[i][k] == 0)
+                if (grid[i][j] == 0)
                 {
                     allOne = false;
-                    grid[i][k] = 1;
+                    grid[i][j] = 1;
                     // 可以优化，把每个岛屿大小存起来
-                    res = max(res, dfs(grid, i, k, mask));
-                    grid[i][k] = 0;
+                    res = max(res, dfs(grid, i, j, mask));
+                    grid[i][j] = 0;
                     mask++;
                 }
             }

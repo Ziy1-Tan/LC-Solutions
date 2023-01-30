@@ -7,21 +7,20 @@ struct ListNode
 #include <iostream>
 using namespace std;
 
+
 class Solution
 {
 public:
     ListNode *deleteDuplicates(ListNode *head)
     {
-        if (head == nullptr || head->next == nullptr)
-        {
+        if (!head || !head->next)
             return head;
-        }
 
         head->next = deleteDuplicates(head->next);
-        if (head->next != nullptr && head->val == head->next->val)
+        if (head->next && head->val == head->next->val)
         {
-            ListNode *removed = head->next;
-            head = head->next->next;
+            auto removed = head->next;
+            head->next = removed->next;
             delete removed;
         }
         return head;
@@ -34,20 +33,18 @@ public:
     ListNode *deleteDuplicates(ListNode *head)
     {
         ListNode *curr = head;
-        while (curr != nullptr && curr->next != nullptr)
+        while (curr && curr->next)
         {
             if (curr->val == curr->next->val)
-            {
                 curr->next = curr->next->next;
-            }
             else
-            {
                 curr = curr->next;
-            }
         }
+
         return head;
     }
 };
+
 
 int main(int argc, char const *argv[])
 {

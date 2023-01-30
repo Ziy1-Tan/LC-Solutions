@@ -15,7 +15,6 @@ public:
 private:
     vector<vector<int>> res;
     vector<int> path;
-    vector<int> used;
     void dfs(const vector<int> &nums, int idx)
     {
         res.push_back(path);
