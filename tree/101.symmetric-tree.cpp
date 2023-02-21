@@ -24,11 +24,8 @@ public:
 private:
     bool isMirror(TreeNode *p, TreeNode *q)
     {
-        if (!p && !q)
-            return true;
-
         if (!p || !q)
-            return false;
+            return p == q;
 
         return p->val == q->val &&
                isMirror(p->left, q->right) && isMirror(p->right, q->left);
@@ -48,13 +45,14 @@ public:
         queue.push(root);
         while (!queue.empty())
         {
-            TreeNode *p = queue.front();
+            auto p = queue.front();
             queue.pop();
-            TreeNode *q = queue.front();
+            auto q = queue.front();
             queue.pop();
 
             if (!p && !q)
                 continue;
+
             if ((!p || !q) || (p->val != q->val))
                 return false;
 

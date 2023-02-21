@@ -9,7 +9,7 @@ class Solution
 public:
     int ladderLength(string beginWord, string endWord, vector<string> &wordList)
     {
-        vector<int> used(wordList.size(), 0);
+        vector<int> used(wordList.size());
         queue<string> q;
         q.push(beginWord);
         int cnt = 1;

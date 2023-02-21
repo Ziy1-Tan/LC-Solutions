@@ -8,7 +8,7 @@ class Solution
 public:
     bool canFinish(int numCourses, vector<vector<int>> &prerequisites)
     {
-        vector<int> inDegree(numCourses, 0);
+        vector<int> inDegree(numCourses);
         vector<vector<int>> adj(numCourses, vector<int>{});
         for (auto &&pre : prerequisites)
         {
