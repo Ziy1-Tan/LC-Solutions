@@ -7,6 +7,7 @@
 	"settings": {
 		"C_Cpp.intelliSenseEngine": "default",
 		"C_Cpp.intelliSenseEngineFallback": "enabled",
+		"C_Cpp.clang_format_style": "Google",
 		"[cpp]": {
 			"editor.defaultFormatter": "ms-vscode.cpptools"
 		},
