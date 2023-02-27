@@ -41,7 +41,8 @@
 			"iterator": "cpp",
 			"locale": "cpp",
 			"variant": "cpp",
-			"version": "cpp"
+			"version": "cpp",
+			"*.tcc": "cpp"
 		},
 	}
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <unordered_map>
+#include <memory>
+
 using namespace std;
 
 class LRUCache {
@@ -83,5 +85,6 @@ int main(int argc, char const *argv[]) {
   cout << cache.get(3) << endl;
   cout << cache.get(4) << endl;
 
+shared_ptr
   return 0;
 }
