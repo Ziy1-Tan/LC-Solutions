@@ -42,7 +42,12 @@
 			"locale": "cpp",
 			"variant": "cpp",
 			"version": "cpp",
-			"*.tcc": "cpp"
+			"*.tcc": "cpp",
+			"__locale": "cpp",
+			"__availability": "cpp",
+			"memory": "cpp",
+			"ostream": "cpp",
+			"climits": "cpp"
 		},
 	}
 }
