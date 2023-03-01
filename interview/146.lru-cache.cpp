@@ -1,6 +1,6 @@
 #include <iostream>
-#include <unordered_map>
 #include <memory>
+#include <unordered_map>
 
 using namespace std;
 
@@ -31,7 +31,7 @@ class LRUCache {
   void put(int key, int value) {
     if (!cache_.count(key)) {
       ListNode *node = new ListNode(key, value);
-      cache_.insert({key, node});
+      cache_.emplace(key, node);
 
       addToHead(node);
 
@@ -85,6 +85,5 @@ int main(int argc, char const *argv[]) {
   cout << cache.get(3) << endl;
   cout << cache.get(4) << endl;
 
-shared_ptr
   return 0;
 }
