@@ -23,20 +23,21 @@ int solve(const string& s) {
 int main() {
   int n;
   cin >> n;
-  string ans("");
   int cnt = 0;
-  int step = 1;
-  while (cnt + step < n) {
-    ans.append("r");
-    cnt += step;
-    step++;
+  for (int i = 0; i <= n; i++) {
+    if ((i * (i + 1)) / 2 > n) {
+      cnt = i - 1;
+      break;
+    }
   }
 
-  int rest = n - cnt;
+  string ans(cnt, 'r');
+  int rest = n - (cnt * (cnt + 1)) / 2;
   string str = "der";
   int j = 0;
-  for (int i = 0; i < rest; i += 3) {
-    ans.append("der");
+  for (int i = 0; i < rest; i++) {
+    ans.push_back(str[j]);
+    j = (j + 1) % 3;
   }
 
   cout << ans << endl;

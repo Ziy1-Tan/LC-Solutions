@@ -47,7 +47,9 @@
 			"__availability": "cpp",
 			"memory": "cpp",
 			"ostream": "cpp",
-			"climits": "cpp"
+			"climits": "cpp",
+			"__string": "cpp",
+			"utility": "cpp"
 		},
 	}
 }
