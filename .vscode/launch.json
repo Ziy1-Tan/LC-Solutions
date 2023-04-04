@@ -5,16 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "lldb launch",
             "type": "lldb",
             "request": "launch",
-            "name": "Launch",
             "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
             "args": [],
             "cwd": "${fileDirname}",
             "preLaunchTask": "build cpp file"
         },
         {
-            "name": "gdb",
+            "name": "gdb launch",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
