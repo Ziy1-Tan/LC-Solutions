@@ -1,0 +1,18 @@
+def check(n, a):
+    if n % 2 != 0:
+        return False
+    a.sort()
+    target_sum = a[0] + a[-1]
+    for i in range(n // 2):
+        if a[i] + a[n-1-i] != target_sum:
+            return False
+    return True
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    if check(n, a):
+        print("YES")
+    else:
+        print("NO")

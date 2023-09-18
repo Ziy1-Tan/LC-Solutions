@@ -21,24 +21,23 @@ class Codec {
     if (!root) {
       return "";
     }
+    string res("[");
     queue<TreeNode *> q;
     q.push(root);
-    string ans{"["};
     while (!q.empty()) {
-      auto node = q.front();
+      auto p = q.front();
       q.pop();
-      if (node) {
-        ans += to_string(node->val);
-        q.push(node->left);
-        q.push(node->right);
+      if (p) {
+        res += to_string(p->val);
+        q.push(p->left);
+        q.push(p->right);
       } else {
-        ans += "null";
+        res += "null";
       }
-      ans += ',';
+      res += ",";
     }
-
-    ans.pop_back();
-    return ans + "]";
+    res.pop_back();
+    return res + "]";
   }
 
   // Decodes your encoded data to tree.
@@ -46,30 +45,31 @@ class Codec {
     if (data.empty()) {
       return nullptr;
     }
-    data.pop_back();
     data = data.substr(1);
+    data.pop_back();
+    queue<TreeNode *> q;
     vector<string> nums;
     string val;
     stringstream ss(data);
     while (getline(ss, val, ',')) {
       nums.push_back(val);
     }
-    queue<TreeNode *> q;
-    TreeNode *root = new TreeNode(stoi(nums[0]));
+
+    auto root = new TreeNode(stoi(nums[0]));
     q.push(root);
     int i = 1;
     while (!q.empty()) {
-      auto node = q.front();
+      auto p = q.front();
       q.pop();
-      if (i >= nums.size()) continue;
+      if (i >= nums.size()) break;
       if (nums[i] != "null") {
-        node->left = new TreeNode(stoi(nums[i]));
-        q.push(node->left);
+        p->left = new TreeNode(stoi(nums[i]));
+        q.push(p->left);
       }
       i++;
       if (nums[i] != "null") {
-        node->right = new TreeNode(stoi(nums[i]));
-        q.push(node->right);
+        p->right = new TreeNode(stoi(nums[i]));
+        q.push(p->right);
       }
       i++;
     }

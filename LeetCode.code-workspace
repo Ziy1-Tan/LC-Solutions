@@ -16,6 +16,9 @@
 			"*.result": "sql",
 			"*.result.tmp": "sql",
 			"*.log.*": "log",
+			"*.pyx": "python",
+			"*.pxd": "python",
+			"*.pxi": "python",
 			"initializer_list": "cpp",
 			"tuple": "cpp",
 			"stack": "cpp",
@@ -90,7 +93,21 @@
 			"system_error": "cpp",
 			"type_traits": "cpp",
 			"typeinfo": "cpp",
-			"algorithm": "cpp"
+			"algorithm": "cpp",
+			"bit": "cpp",
+			"charconv": "cpp",
+			"list": "cpp",
+			"memory_resource": "cpp",
+			"random": "cpp",
+			"fstream": "cpp",
+			"future": "cpp",
+			"numbers": "cpp",
+			"semaphore": "cpp",
+			"stop_token": "cpp",
+			"thread": "cpp"
+		},
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.black-formatter"
 		},
 	}
 }
