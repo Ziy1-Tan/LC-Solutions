@@ -104,7 +104,11 @@
 			"numbers": "cpp",
 			"semaphore": "cpp",
 			"stop_token": "cpp",
-			"thread": "cpp"
+			"thread": "cpp",
+			"iomanip": "cpp",
+			"span": "cpp",
+			"cinttypes": "cpp",
+			"format": "cpp"
 		},
 		"[python]": {
 			"editor.defaultFormatter": "ms-python.black-formatter"
