@@ -37,7 +37,7 @@ class Solution {
     string ans;
     int i = num1.size() - 1, j = num2.size() - 1;
     int flag = 0;
-    while (i >= 0 || j >= 0) {
+    while (i >= 0 || j >= 0 || flag != 0) {
       int c1 = i >= 0 ? num1[i] - '0' : 0;
       int c2 = j >= 0 ? num2[j] - '0' : 0;
       int sum = c1 + c2 + flag;
@@ -45,9 +45,6 @@ class Solution {
       ans.push_back(sum % 10 + '0');
       i--;
       j--;
-    }
-    if (flag > 0) {
-      ans.push_back(flag + '0');
     }
     reverse(ans.begin(), ans.end());
     return ans;

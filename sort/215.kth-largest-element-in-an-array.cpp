@@ -30,18 +30,12 @@ class Solution {
       while (l <= r && nums[l] < pivot) l++;
       while (l <= r && nums[r] > pivot) r--;
       if (l >= r) break;
-      swap(nums, l, r);
+      swap(nums[l], nums[r]);
       l++;
       r--;
     }
-    swap(nums, start, r);
+    swap(nums[start], nums[r]);
     return r;
-  }
-
-  void swap(vector<int>& nums, int i, int j) {
-    int tmp = nums[i];
-    nums[i] = nums[j];
-    nums[j] = tmp;
   }
 };
 
