@@ -10,10 +10,10 @@
 using namespace std;
 
 class Solution {
-public:
+ public:
   vector<int> productExceptSelf(vector<int> &nums) {
     int n = nums.size();
-    // 索引i右侧的乘积
+    // 索引i左侧的乘积
     vector<int> lprefix(n);
     lprefix[0] = 1;
     for (int i = 1; i < n; i++) {
@@ -37,7 +37,7 @@ public:
 };
 
 class Solution2 {
-public:
+ public:
   vector<int> productExceptSelf(vector<int> &nums) {
     int n = nums.size();
     vector<int> res(n, 1);
@@ -54,12 +54,10 @@ public:
 };
 
 int main(int argc, const char *argv[]) {
-
   vector<int> nums = {1, 2, 3, 4};
   auto res = (new Solution2)->productExceptSelf(nums);
   auto pv = [](const auto res) {
-    for (auto &&i : res)
-      cout << i << " ";
+    for (auto &&i : res) cout << i << " ";
     cout << '\n';
   };
   pv(res);
