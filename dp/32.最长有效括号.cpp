@@ -20,14 +20,16 @@ class Solution {
       if (s[i] == '(') {
         st.push(i);
       } else {
+        // 左边没有匹配的'('
         if (st.empty()) {
           start = i + 1;
         } else {
           st.pop();
+          // 左边全部匹配成功
           if (st.empty()) {
             maxLen = max(maxLen, i - start + 1);
-          } else {
             // (((()
+          } else {
             maxLen = max(maxLen, i - st.top());  // i - (st.top() +1) + 1
           }
         }

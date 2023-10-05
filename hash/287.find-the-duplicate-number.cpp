@@ -23,15 +23,13 @@ class Solution {
 class Solution2 {
  public:
   int findDuplicate(vector<int>& nums) {
-    for (int l = 0; l < nums.size(); l++) {
-      while (nums[l] - 1 != l) {
-        int r = nums[l] - 1;
-        if (nums[r] - 1 == r) {
-          return nums[r];
+    for (int i = 0; i < nums.size(); i++) {
+      while (nums[i] != i + 1) {
+        int j = nums[i] - 1;
+        if (nums[j] == j + 1) {
+          return nums[j];
         }
-        int tmp = nums[l];
-        nums[l] = nums[r];
-        nums[r] = tmp;
+        swap(nums[i], nums[j]);
       }
     }
     return -1;

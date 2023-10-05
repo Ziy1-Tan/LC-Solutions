@@ -10,13 +10,13 @@ class Solution {
     int len = s.size();
     vector<bool> dp(len + 1, false);
     unordered_set<string> wordSet;
-    for (int i = 0; i < wordDict.size(); i++) {
-      wordSet.insert(wordDict[i]);
+    for (auto&& word : wordDict) {
+      wordSet.insert(word);
     }
     dp[0] = true;
     /*
      * @param i: 长度为l的前缀子串
-     * @param j: 用于遍历前缀子串是否可以被拆分4
+     * @param j: 用于遍历前缀子串是否可以被拆分
      */
     for (int i = 1; i <= len; i++) {
       for (int j = 0; j < i; j++) {

@@ -53,12 +53,12 @@ class Solution3 {
 
     int n = prices.size();
     // 今天为止买入的最小值 and 今天卖出利润的最大值
-    int min = prices[0], max = 0;
+    int minPrice = prices[0], res = 0;
     for (int i = 1; i < n; i++) {
-      max = std::max(max, prices[i] - min);
-      min = std::min(min, prices[i]);
+      res = max(res, prices[i] - minPrice);
+      minPrice = min(minPrice, prices[i]);
     }
-    return max;
+    return res;
   }
 };
 

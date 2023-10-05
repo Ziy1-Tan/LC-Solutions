@@ -25,11 +25,9 @@ class Solution {
         res2 = res2 * 10 + (version2[p2++] - '0');
       }
       p2++;
-      if (res1 > res2) {
-        return 1;
-      } else if (res1 < res2) {
-        return -1;
-      }
+
+      if (res1 > res2) return 1;
+      if (res1 < res2) return -1;
     }
     return 0;
   }

@@ -12,8 +12,9 @@ using namespace std;
 class Solution {
  public:
   TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-    while ((long)(root->val - p->val) * (long)(root->val - q->val) > 0)
+    while ((long)(root->val - p->val) * (long)(root->val - q->val) > 0) {
       root = p->val < root->val ? root->left : root->right;
+    }
     return root;
   }
 };
@@ -21,8 +22,9 @@ class Solution {
 class Solution2 {
  public:
   TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
-    if ((long)(root->val - p->val) * (long)(root->val - q->val) <= 0)
+    if ((long)(root->val - p->val) * (long)(root->val - q->val) <= 0) {
       return root;
+    }
 
     return lowestCommonAncestor(p->val < root->val ? root->left : root->right,
                                 p, q);
@@ -36,10 +38,15 @@ class Solution3 {
 
     TreeNode *left = lowestCommonAncestor(root->left, p, q);
     // 说明p、q均在右子树
-    if (!left) return lowestCommonAncestor(root->right, p, q);
+    if (!left) {
+      return lowestCommonAncestor(root->right, p, q);
+    }
 
+    // 说明p、q均在左子树
     TreeNode *right = lowestCommonAncestor(root->right, p, q);
-    if (!right) return left;
+    if (!right) {
+      return left;
+    }
 
     return root;
   }

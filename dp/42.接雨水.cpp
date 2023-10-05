@@ -81,7 +81,7 @@ class Solution3 {
     }
     int n = height.size();
     int ans = 0;
-    // 元素索引，栈顶->栈低升序排列，当前元素>栈顶时出栈计算
+    // 元素索引，栈顶->栈底降序排列，当前元素>栈顶时出栈计算
     stack<int> st;
     for (int i = 0; i < n; i++) {
       // 对 [0,1,0,0,3] 也适用
@@ -94,7 +94,7 @@ class Solution3 {
         int l = st.top();
         // 左右最高柱子较小 - 当前高度的差 = 能装的水
         int h = min(height[l], height[i]) - height[curr];
-        ans += (i - l) * h;
+        ans += (i - l - 1) * h;
       }
       st.push(i);
     }
