@@ -7,16 +7,15 @@ class Solution {
   int findKthLargest(vector<int>& nums, int k) {
     int n = nums.size();
     int target = n - k;
-    int start = 0;
-    int end = n - 1;
+    int start = 0, end = n - 1;
     while (true) {
-      int pivotIdx = partition(nums, start, end);
-      if (pivotIdx == target) {
-        return nums[pivotIdx];
-      } else if (pivotIdx < target) {
-        start = pivotIdx + 1;
-      } else if (pivotIdx > target) {
-        end = pivotIdx - 1;
+      int p = partition(nums, start, end);
+      if (p == target) {
+        return nums[p];
+      } else if (p < target) {
+        start = p + 1;
+      } else {
+        end = p - 1;
       }
     }
     return -1;
@@ -24,8 +23,7 @@ class Solution {
 
   int partition(vector<int>& nums, int start, int end) {
     int pivot = nums[start];
-    int l = start + 1;
-    int r = end;
+    int l = start + 1, r = end;
     while (true) {
       while (l <= r && nums[l] < pivot) l++;
       while (l <= r && nums[r] > pivot) r--;

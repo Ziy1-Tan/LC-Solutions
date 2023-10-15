@@ -4,10 +4,10 @@ using namespace std;
 
 class Solution
 {
-  class UFSet
+  class UF
   {
   public:
-    UFSet(int n)
+    UF(int n)
     {
       for (int i = 0; i < n; i++)
       {
@@ -58,7 +58,7 @@ public:
       return;
     }
 
-    UFSet set(r * c + 1);
+    UF set(r * c + 1);
 
     for (int i = 0; i < r; i++)
     {

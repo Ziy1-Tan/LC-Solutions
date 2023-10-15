@@ -14,22 +14,15 @@ class Solution {
     int two = n;
     while (i < two) {
       if (nums[i] == 0) {
-        swap(nums, zero, i);
+        swap(nums[zero], nums[i]);
         zero++;
         i++;
       } else if (nums[i] == 1) {
         i++;
       } else if (nums[i] == 2) {
         two--;
-        swap(nums, i, two);
+        swap(nums[i], nums[two]);
       }
     }
-  }
-
- private:
-  void swap(vector<int>& nums, int i, int j) {
-    int tmp = nums[i];
-    nums[i] = nums[j];
-    nums[j] = tmp;
   }
 };

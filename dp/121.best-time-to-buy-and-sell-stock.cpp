@@ -10,12 +10,13 @@ class Solution {
     }
 
     int n = prices.size();
-    vector<vector<int>> dp(n, vector(2, 0));
+    // dp[i][0] 表示第i天不持股的最大利润, dp[i][1] 表示第i天持股的最大利润
+    vector<vector<int>> dp(n, vector<int>(2));
     dp[0][0] = 0;
     dp[0][1] = -prices[0];
     for (int i = 1; i < n; i++) {
-      // 继续等待 or 今天卖出
-      // 继续持股 or 今天买入
+      // 可能是前几天卖的，也有可能是今天卖的
+      // 有可能是前几天买的，也有可能会是今天刚买的
       dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
       dp[i][1] = max(dp[i - 1][1], -prices[i]);
     }

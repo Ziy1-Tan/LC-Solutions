@@ -4,17 +4,18 @@
 using namespace std;
 
 class Solution {
-public:
+ public:
   int lengthOfLongestSubstring(string s) {
-    int slow = 0;
     int maxLen = 0;
+    int n = s.size();
+    int l = 0, r = 0;
     unordered_set<char> set;
-    for (int fast = 0; fast < s.size(); fast++) {
-      while (set.count(s[fast])) {
-        set.erase(s[slow++]);
+    while (r < n) {
+      while (set.count(s[r])) {
+        set.erase(s[l++]);
       }
-      maxLen = max(maxLen, fast - slow + 1);
-      set.insert(s[fast]);
+      maxLen = max(maxLen, r - l + 1);
+      set.insert(s[r++]);
     }
     return maxLen;
   }

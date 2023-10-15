@@ -10,11 +10,7 @@ class Solution {
     dp[0] = nums[0];
     int ans = dp[0];
     for (int i = 1; i < nums.size(); i++) {
-      if (dp[i - 1] >= 0) {
-        dp[i] = dp[i - 1] + nums[i];
-      } else {
-        dp[i] = nums[i];
-      }
+      dp[i] = max(dp[i - 1] + nums[i], nums[i]);
       ans = max(ans, dp[i]);
     }
     return ans;
@@ -46,10 +42,10 @@ class Solution_Arr {
   }
 };
 
+// dp空间优化版
 class Solution2 {
  public:
   int maxSubArray(vector<int>& nums) {
-    int maxSum = nums[0];
     int pre = nums[0], cur = 0;
     int ans = pre;
     for (int i = 1; i < nums.size(); i++) {

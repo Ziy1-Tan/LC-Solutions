@@ -11,7 +11,9 @@ class Solution {
     int n = s.size();
     vector<vector<int>> dp(n, vector<int>(n));
     int cnt = 0;
-    for (int i = 0; i < n; i++) dp[i][i] = 1;
+    for (int i = 0; i < n; i++) {
+      dp[i][i] = 1;
+    }
 
     for (int i = n - 1; i >= 0; i--)
       for (int j = i; j < n; j++)
@@ -41,7 +43,9 @@ class Solution2 {
  private:
   int cnt = 0;
   void expand(const string &s, int l, int r) {
-    while (l >= 0 && r < s.size() && s[l--] == s[r++]) cnt++;
+    while (l >= 0 && r < s.size() && s[l--] == s[r++]) {
+      cnt++;
+    }
   }
 };
 

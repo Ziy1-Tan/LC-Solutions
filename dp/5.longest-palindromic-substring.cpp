@@ -35,8 +35,8 @@ class Solution2 {
 
     int begin = 0, maxLen = 0;
     for (int i = 0; i < s.size(); i++) {
-      auto &&[begin1, len1] = expand(s, i, i);
-      auto &&[begin2, len2] = expand(s, i, i + 1);
+      auto [begin1, len1] = expand(s, i, i);
+      auto [begin2, len2] = expand(s, i, i + 1);
       int len = max(len1, len2);
       if (len > maxLen) {
         maxLen = len;

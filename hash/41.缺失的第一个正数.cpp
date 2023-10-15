@@ -20,9 +20,8 @@ class Solution {
           break;
         }
 
-        int idx = nums[i] - 1;
-        nums[i] = nums[idx];
-        nums[idx] = idx + 1;
+        int j = nums[i] - 1;
+        swap(nums[i], nums[j]);
       }
     }
 

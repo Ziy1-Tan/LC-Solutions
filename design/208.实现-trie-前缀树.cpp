@@ -11,15 +11,15 @@ using namespace std;
 
 class Trie {
  public:
-  Trie() : isEnd(false) { std::fill_n(next.begin(), 26, nullptr); }
+  Trie() : isEnd(false) { fill_n(children.begin(), 26, nullptr); }
 
   void insert(string word) {
     Trie* node = this;
     for (auto&& c : word) {
-      if (!node->next[c - 'a']) {
-        node->next[c - 'a'] = new Trie();
+      if (!node->children[c - 'a']) {
+        node->children[c - 'a'] = new Trie();
       }
-      node = node->next[c - 'a'];
+      node = node->children[c - 'a'];
     }
     node->isEnd = true;
   }
@@ -27,10 +27,10 @@ class Trie {
   bool search(string word) {
     Trie* node = this;
     for (auto& c : word) {
-      node = node->next[c - 'a'];
-      if (!node) {
+      if (!node->children[c - 'a']) {
         return false;
       }
+      node = node->children[c - 'a'];
     }
     return node->isEnd;
   }
@@ -38,16 +38,17 @@ class Trie {
   bool startsWith(string prefix) {
     Trie* node = this;
     for (auto& c : prefix) {
-      node = node->next[c - 'a'];
-      if (!node) {
+      if (!node->children[c - 'a']) {
         return false;
       }
+      node = node->children[c - 'a'];
     }
     return true;
   }
 
+ private:
   bool isEnd;
-  array<Trie*, 26> next;
+  array<Trie*, 26> children;
 };
 
 /**

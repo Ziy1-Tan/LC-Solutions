@@ -4,10 +4,10 @@ using namespace std;
 
 class Solution
 {
-    class UFSet
+    class UF
     {
     public:
-        UFSet(const vector<vector<int>> &grid)
+        UF(const vector<vector<int>> &grid)
         {
             int r = grid.size(), c = grid[0].size();
             for (int i = 0; i < r; i++)
@@ -80,7 +80,7 @@ public:
         {
             return 0;
         }
-        UFSet set(grid);
+        UF set(grid);
         for (int i = 0; i < grid.size(); i++)
         {
             for (int k = 0; k < grid[0].size(); k++)

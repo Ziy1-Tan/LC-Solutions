@@ -8,10 +8,10 @@ class Solution
 private:
     constexpr static int dx[] = {-1, 1, 0, 0};
     constexpr static int dy[] = {0, 0, -1, 1};
-    class UFSet
+    class UF
     {
     public:
-        UFSet(const vector<vector<int>> &grid)
+        UF(const vector<vector<int>> &grid)
         {
             int r = grid.size(), c = grid[0].size();
             for (int i = 0; i < r; i++)
@@ -84,7 +84,7 @@ public:
 
         int res = 0;
         bool allOne = true;
-        UFSet set(grid);
+        UF set(grid);
         for (int i = 0; i < r; i++)
         {
             for (int j = 0; j < c; j++)

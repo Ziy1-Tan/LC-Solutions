@@ -1,5 +1,6 @@
 #include <climits>
 #include <iostream>
+#include <limits>
 #include <queue>
 #include <tuple>
 #include <vector>
@@ -28,11 +29,11 @@ class Solution {
  private:
   // 可以改成迭代形式
   ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
-    if (list1 == nullptr) {
+    if (!list1) {
       return list2;
     }
 
-    if (list2 == nullptr) {
+    if (!list2) {
       return list1;
     }
 
@@ -49,32 +50,31 @@ class Solution {
 class Solution2 {
  public:
   ListNode *mergeKLists(vector<ListNode *> &lists) {
-    auto cmp = [](const ListNode *list1, const ListNode *list2) {
-      int val1 = list1 == nullptr ? INT32_MAX : list1->val;
-      int val2 = list2 == nullptr ? INT32_MAX : list2->val;
-      return val1 > val2;
-    };
-    priority_queue<ListNode *, vector<ListNode *>, decltype(cmp)> q(cmp, lists);
+    auto cmp = [](ListNode *a, ListNode *b) { return a->val > b->val; };
+    priority_queue<ListNode *, vector<ListNode *>, decltype(cmp)> q(cmp);
+    for (auto head : lists) {
+      if (head) q.push(head);
+    }
+
     ListNode *dummy = new ListNode(-1);
     ListNode *curr = dummy;
 
     while (!q.empty()) {
       ListNode *tmp = q.top();
       q.pop();
-      if (tmp == nullptr) {
+      if (!tmp) {
         continue;
       }
 
       curr->next = tmp;
       curr = curr->next;
       tmp = tmp->next;
-      q.push(tmp);
+      if (tmp) q.push(tmp);
     }
 
     return dummy->next;
   }
 };
-
 int main(int argc, char const *argv[]) {
   auto init_list = [](initializer_list<int> l) -> ListNode * {
     if (l.size() == 0) return nullptr;
