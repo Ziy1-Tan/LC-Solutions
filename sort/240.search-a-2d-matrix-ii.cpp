@@ -5,6 +5,7 @@ class Solution {
  public:
   bool searchMatrix(vector<vector<int>>& matrix, int target) {
     int m = matrix.size(), n = matrix.front().size();
+    // 从右上角开始
     int i = m - 1, j = 0;
     while (i >= 0 && j <= n - 1) {
       // 左子树

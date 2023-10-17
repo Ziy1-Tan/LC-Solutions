@@ -36,18 +36,17 @@ class Solution2 {
   vector<vector<string>> groupAnagrams(vector<string>& strs) {
     vector<vector<string>> res;
     unordered_map<string, int> map;
-    int sub = 0;
-    for (auto&& s : strs) {
+    int idx = 0;
+    for (const auto& s : strs) {
       string tmp = s;
       sort(tmp.begin(), tmp.end());
       if (map.count(tmp)) {
         res[map[tmp]].push_back(s);
       } else {
         res.emplace_back(1, s);
-        map[tmp] = sub++;
+        map.emplace(tmp, idx++);
       }
     }
-
     return res;
   }
 };

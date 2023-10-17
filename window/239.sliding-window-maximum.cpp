@@ -26,7 +26,7 @@ class Solution2 {
  public:
   vector<int> maxSlidingWindow(vector<int>& nums, int k) {
     deque<int> que;
-    // 队头->队尾 单调递减
+    // 递增队列
     for (size_t i = 0; i < k; i++) {
       while (!que.empty() && nums[i] > que.back()) {
         que.pop_back();
@@ -36,15 +36,16 @@ class Solution2 {
 
     vector<int> res{que.front()};
     for (int i = k; i < nums.size(); i++) {
-      // 从队列中删除nums[i-k]
+      // 窗口滑动后，从队列中删除nums[i-k]过期元素
       if (!que.empty() && que.front() == nums[i - k]) {
         que.pop_front();
       }
-      // 插入元素nums[i]
+      // 插入滑动后新元素nums[i]
       while (!que.empty() && nums[i] > que.back()) {
         que.pop_back();
       }
       que.push_back(nums[i]);
+      // 最大值始终为队头
       res.push_back(que.front());
     }
     return res;

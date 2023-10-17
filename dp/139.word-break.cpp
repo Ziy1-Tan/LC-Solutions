@@ -9,10 +9,7 @@ class Solution {
   bool wordBreak(string s, vector<string>& wordDict) {
     int len = s.size();
     vector<bool> dp(len + 1, false);
-    unordered_set<string> wordSet;
-    for (auto&& word : wordDict) {
-      wordSet.insert(word);
-    }
+    unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
     dp[0] = true;
     /*
      * @param i: 长度为l的前缀子串

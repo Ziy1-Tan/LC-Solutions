@@ -72,7 +72,7 @@ class Solution {
       // 是 '(' 但是不选，需要删掉的 '(' 数量 - 1
       dfs(i + 1, l - 1, r, score, tmp);
     } else if (str[i] == ')') {
-      dfs(i + 1, l, r, score - 1, tmp + sr[i]);
+      dfs(i + 1, l, r, score - 1, tmp + str[i]);
       dfs(i + 1, l, r - 1, score, tmp);
     } else {
       dfs(i + 1, l, r, score, tmp + str[i]);

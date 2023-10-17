@@ -8,15 +8,16 @@ class Solution {
     if (coins.empty() || amount == 0) {
       return 0;
     }
-    std::vector<std::vector<int>> dp(coins.size(),
-                                     vector<int>(amount + 1, amount + 1));
+
+    int n = coins.size();
+    std::vector<std::vector<int>> dp(n, vector<int>(amount + 1, amount + 1));
+    for (int i = 0; i < n; i++) {
+      dp[i][0] = 0;
+    }
     for (int j = 0; j <= amount; j++) {
       if (j % coins[0] == 0) {
         dp[0][j] = j / coins[0];
       }
-    }
-    for (int i = 0; i < coins.size(); i++) {
-      dp[i][0] = 0;
     }
 
     // dp[i][j] = min(dp[i-1][j], dp[i][j-coins[i]]+1)

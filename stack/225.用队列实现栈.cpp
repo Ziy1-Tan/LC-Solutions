@@ -8,6 +8,7 @@
 #include <queue>
 using namespace std;
 
+// 栈中存储元组，可以利用单栈
 class MyStack {
  public:
   MyStack() {}

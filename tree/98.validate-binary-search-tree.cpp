@@ -45,7 +45,6 @@ class Solution2 {
     if (root->val <= prev) {
       return false;
     }
-
     prev = root->val;
 
     return isValidBST(root->right);
