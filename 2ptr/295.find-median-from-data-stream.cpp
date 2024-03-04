@@ -6,31 +6,34 @@ class MedianFinder {
   MedianFinder() {}
 
   void addNum(int num) {
-    if (l.size() == r.size()) {
-      if (r.empty() || num <= r.top()) {
-        l.push(num);
+    if (leftPq.size() == rightPq.size()) {
+      // 不在后半部分
+      if (leftPq.empty() || num < rightPq.top()) {
+        leftPq.push(num);
       } else {
-        l.push(r.top());
-        r.pop();
-        r.push(num);
+        leftPq.push(rightPq.top());
+        rightPq.pop();
+        rightPq.push(num);
       }
     } else {
-      if (num >= l.top()) {
-        r.push(num);
+      // 不在前半部分
+      if (num > leftPq.top()) {
+        rightPq.push(num);
       } else {
-        r.push(l.top());
-        l.pop();
-        l.push(num);
+        rightPq.push(leftPq.top());
+        leftPq.pop();
+        leftPq.push(num);
       }
     }
   }
 
   double findMedian() {
-    return l.size() == r.size() ? static_cast<double>((l.top() + r.top())) / 2.0
-                                : l.top();
+    return leftPq.size() == rightPq.size()
+               ? static_cast<double>(leftPq.top() + rightPq.top()) / 2.0
+               : leftPq.top();
   }
 
  private:
-  priority_queue<int> l;
-  priority_queue<int, vector<int>, greater<int>> r;
+  priority_queue<int> leftPq;
+  priority_queue<int, vector<int>, greater<int>> rightPq;
 };

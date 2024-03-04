@@ -10,6 +10,7 @@ class Solution {
     sort(nums.begin(), nums.end());
     int n = nums.size();
     for (int i = 0; i < n; i++) {
+      // 大于0或连续两个相等的数跳过
       if (nums[i] > 0) break;
       if (i > 0 && nums[i] == nums[i - 1]) continue;
       int j = i + 1, k = n - 1;

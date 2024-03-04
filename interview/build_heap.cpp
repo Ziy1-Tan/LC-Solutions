@@ -11,10 +11,9 @@ void ShiftUp(vector<int> &heap, int i) {
   }
 }
 
-void ShiftDown(vector<int> &heap, int i) {
+void ShiftDown(vector<int> &heap, int i, int n) {
   int l = i * 2 + 1;
-  int n = heap.size();
-  while (l < heap.size()) {
+  while (l < n) {
     int maxChild = (l + 1 < n && heap[l] > heap[l + 1]) ? l : l + 1;
     if (heap[i] >= heap[maxChild]) {
       break;
@@ -27,8 +26,9 @@ void ShiftDown(vector<int> &heap, int i) {
 }
 
 void BuildHeap(vector<int> &heap) {
-  for (int i = (heap.size() - 2) / 2; i >= 0; i--) {
-    ShiftDown(heap, i);
+  int n = heap.size();
+  for (int i = heap.size() / 2 - 1; i >= 0; i--) {
+    ShiftDown(heap, i, n);
   }
 }
 
@@ -40,5 +40,5 @@ int main(int argc, char const *argv[]) {
   }
   cout << '\n';
 
-    return 0;
+  return 0;
 }

@@ -24,7 +24,7 @@ class Solution {
   int partition(vector<int>& nums, int start, int end) {
     int pivot = nums[start];
     int l = start + 1, r = end;
-    while (true) {
+    while (1) {
       while (l <= r && nums[l] < pivot) l++;
       while (l <= r && nums[r] > pivot) r--;
       if (l >= r) break;
