@@ -16,10 +16,10 @@ class Solution {
       if (nums[i] == 0) {
         swap(nums[zero], nums[i]);
         zero++;
-        i++;
-      } else if (nums[i] == 1) {
-        i++;
-      } else if (nums[i] == 2) {
+        one++;
+      } else if (nums[one] == 1) {
+        one++;
+      } else if (nums[one] == 2) {
         two--;
         swap(nums[i], nums[two]);
       }

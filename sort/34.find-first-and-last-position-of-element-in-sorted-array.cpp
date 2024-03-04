@@ -4,14 +4,16 @@ using namespace std;
 class Solution {
  public:
   vector<int> searchRange(vector<int>& nums, int target) {
-    int start = binarySearch(nums, target - 1, 0, nums.size() - 1);
-    int end = binarySearch(nums, target, 0, nums.size() - 1);
-    if (start == end) {
+    int n = nums.size();
+    int l = binarySearch(nums, target - 1, 0, n - 1);
+    int r = binarySearch(nums, target, 0, n - 1);
+    if (l == r) {
       return {-1, -1};
     }
-    return {start, end - 1};
+    return {l, r - 1};
   }
 
+  // 返回值为target的最右边+1
   int binarySearch(const vector<int>& nums, int target, int l, int r) {
     while (l <= r) {
       int mid = (l + r) / 2;

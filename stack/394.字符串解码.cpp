@@ -4,7 +4,7 @@
 using namespace std;
 
 class Solution {
-public:
+ public:
   string decodeString(string s) {
     string res;
     stack<int> nums;

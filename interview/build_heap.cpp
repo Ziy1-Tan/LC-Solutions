@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+// 添加的时候
 void ShiftUp(vector<int> &heap, int i) {
   int p = (i - 1) / 2;
   while (i > 0 && heap[i] > heap[p]) {
@@ -11,24 +12,28 @@ void ShiftUp(vector<int> &heap, int i) {
   }
 }
 
-void ShiftDown(vector<int> &heap, int i, int n) {
-  int l = i * 2 + 1;
-  while (l < n) {
-    int maxChild = (l + 1 < n && heap[l] > heap[l + 1]) ? l : l + 1;
-    if (heap[i] >= heap[maxChild]) {
+// 删除或者建堆的时候
+void ShiftDown(vector<int> &heap, int i, int end) {
+  int child = i * 2 + 1;
+  while (child <= end) {
+    if (child + 1 <= end && heap[child] < heap[child + 1]) {
+      child++;
+    }
+    // 最大堆，父节点已经比子节点大了
+    if (heap[i] >= heap[child]) {
       break;
     }
 
-    swap(heap[i], heap[maxChild]);
-    i = maxChild;
-    l = i * 2 + 1;
+    swap(heap[i], heap[child]);
+    i = child;
+    child = i * 2 + 1;
   }
 }
 
 void BuildHeap(vector<int> &heap) {
   int n = heap.size();
-  for (int i = heap.size() / 2 - 1; i >= 0; i--) {
-    ShiftDown(heap, i, n);
+  for (int i = n / 2 - 1; i >= 0; i--) {
+    ShiftDown(heap, i, n - 1);
   }
 }
 

@@ -13,13 +13,13 @@ class Solution {
     if (n == 1) {
       return nums.front();
     }
-    vector<int> dp(nums.size());
+    vector<int> dp(n);
     dp[0] = nums[0];
     dp[1] = max(nums[0], nums[1]);
-    for (int i = 2; i < nums.size(); i++) {
+    for (int i = 2; i < n; i++) {
       dp[i] = max(dp[i - 2] + nums[i], dp[i - 1]);
     }
-    return dp[n - 1];
+    return dp.back();
   }
 };
 

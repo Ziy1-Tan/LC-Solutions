@@ -32,9 +32,9 @@ class Solution2 {
       return 0;
     }
     int n = prices.size();
-    // dp[i][0] i天不持有股票，dp[i][1] i天买入股票
+    // dp[i][0] i天不持有股票，dp[i][1] i天持有股票
     // 可优化为2个变量
-    vector<vector<int>> dp(n, vector(2, 0));
+    vector<vector<int>> dp(n, vector<int>(2));
     dp[0][0] = 0;
     dp[0][1] = -prices[0];
     for (int i = 1; i < n; i++) {
